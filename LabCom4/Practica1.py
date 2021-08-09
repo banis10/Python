@@ -20,7 +20,7 @@ plt.ylabel('x[n]')
 '''
 x2 = np.arange(-n,n+1,1)
 xn2 = np.zeros(2*n+1)
-xn2[n-5]=0.5
+xn2[n+5]=0.5
 
 plt.subplot(312)
 plt.stem(x2,xn2,'y')
