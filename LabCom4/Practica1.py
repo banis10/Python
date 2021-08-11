@@ -55,10 +55,10 @@ import matplotlib.pyplot as plt
 import numpy as np 
 n=8
 n = np.arange(0,10,1)
-plt.plot(n, signal.square(2 * np.pi * 10*n * t,0.2),'r',t,signal.square(2*np.pi*10*n*t),'b')
+plt.plot(n, signal.square(2 * np.pi * 10*n * t,0.2),'r',n,signal.square(2*np.pi*10*n*t),'b')
 plt.ylim(-2, 2)
 plt.title('Secuencia cuadrada periodica con \n ciclo de trabajo 1/5 y frecuencia 80 Hz')
-plt.stem(n, signal.square(2 * np.pi * 10*n * t,0.2),'r')
+plt.stem(n, signal.square(2 * np.pi * 10*n * n,0.2),'r')
 plt.ylabel('x[n]')
 plt.xlabel('n')
 plt.grid(True)
