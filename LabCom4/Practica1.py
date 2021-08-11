@@ -13,6 +13,7 @@ xn1[0]=1
 plt.figure()
 plt.subplot(311)
 plt.stem(x1,xn1,'y')
+plt.grid(True)
 plt.title('Funcion impulso')
 plt.ylabel('x[n]')
 '''
@@ -25,6 +26,7 @@ xn2[n+5]=0.5
 plt.subplot(312)
 plt.stem(x2,xn2,'y')
 plt.ylim(0,1)
+plt.grid(True)
 plt.title('Funcion impulso δ[n-5]' )
 plt.ylabel('x[n]')
 '''
@@ -32,16 +34,17 @@ plt.ylabel('x[n]')
 '''
 x3 = np.arange(-n,n+1,1)
 xn3 = np.zeros(2*n+1)
-xn3[n+1:]=1
+xn3[n:]=1
 
 plt.subplot(313)
-plt.step(x3,xn3)
+#plt.step(x3,xn3)
 plt.ylim(0,1.5)
 plt.xlim(-n,n)
 plt.stem(x3,xn3)
 plt.title('Funcion escalon')
 plt.ylabel('x[n]')
 plt.xlabel('n')
+plt.grid(True)
 plt.show()
 
 '''
@@ -51,12 +54,14 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import numpy as np 
 n=8
-t = np.linspace(0,1/20,320)
-plt.plot(t, signal.square(2 * np.pi * 10*n * t,0.2),'r',t,signal.square(2*np.pi*10*n*t),'b')
+n = np.arange(0,10,1)
+plt.plot(n, signal.square(2 * np.pi * 10*n * t,0.2),'r',t,signal.square(2*np.pi*10*n*t),'b')
 plt.ylim(-2, 2)
 plt.title('Secuencia cuadrada periodica con \n ciclo de trabajo 1/5 y frecuencia 80 Hz')
-plt.ylabel('x[s]')
-plt.xlabel('s')
+plt.stem(n, signal.square(2 * np.pi * 10*n * t,0.2),'r')
+plt.ylabel('x[n]')
+plt.xlabel('n')
+plt.grid(True)
 plt.show()
 
 '''
@@ -67,23 +72,23 @@ plt.show()
 
 f = 80
 w = 2*np.pi*f
-x5 = np.linspace(-1/40,1/40,80)
-ys = np.sin(w*x5) 
-yc = np.cos(w*x5)
+n5 = np.arange(-16,16,1)
+ys = np.sin(w*n5) 
+yc = np.cos(w*n5)
 plt.figure()
 plt.ylabel('x(t)')
 plt.xlabe('t')
 plt.title('secuencias seno y coseno')
 plt.subplot(211)
 #plt.step(x5,y5,'r',where='mid' )
-plt.stem(x5,ys,'r')
+plt.stem(n5,ys,'r')
 plt.ylabel('x[n]')
 plt.xlabel('n')
 plt.grid(True)
 plt.title('sin[n]')
 plt.subplot(212)
 #plt.step(x5,y51,'b',where='mid')
-plt.stem(x5,yc,'b')
+plt.stem(n5,yc,'b')
 plt.ylabel('x[n]')
 plt.xlabel('n')
 plt.title('cos[n]')
@@ -98,7 +103,7 @@ plt.show()
 #-1<alpha<0 creciente 
 A = 1
 a = 0.8
-n = np.linspace(0,20,40)
+n = np.arange(0,10,1)
 #Decrecimiento
 
 plt.figure()
@@ -108,6 +113,7 @@ subplot(2,1,1)
 plt.stem(n,xn1,'r')
 subplot(2,1,2)
 plt.stem(n,xn2,'b')
+plt.grid(True)
 plt.show()
 #Crecimiento
 
@@ -117,30 +123,88 @@ plt.show()
 
 f = 80
 w = 2*np.pi*f
-x5 = np.linspace(-1/20,1/20, 80)
+x5 = np.arange(-5,5,1)
 ys = np.sin(w*x5) 
 A = 1
 a =  0.9
-n = np.linspace(0,20,80)
+n = np.arange(0,10,1)
 #Decrecimiento
 xn1 = A*a**n
 xo = ys*xn1
 plt.figure()
 plt.subplot(2,1,1)
 plt.stem(n,xo)
+plt.grid(True)
 plt.subplot(2,1,2)
+plt.grid(True)
 plt.plot(n,xo)
 plt.show()
 
+'''
+8. Una secuencia exponencial compleja de longitud X. Grafique su parte real e imaginaria en la misma pantalla.
+|A||α|n cos(ω0n+φ) + j|A||α|n sen(ω0n+φ).
+= |A|cos(ω0n+φ) + j|A|sen(ω0n+φ);
+p
+'''
 
+import cmath    
+f = 80
+w = 2*np.pi*f
+n5 = np.arange(0,16,1)
+re = np.sin(w*n5) 
+im = np.cos(w*n5)*1j
+plt.figure()
+plt.ylabel('x[n]')
+plt.xlabe('t')
+plt.title('Secuencia exponencial compleja')
+plt.subplot(211)
+#plt.step(x5,y5,'r',where='mid' )
+plt.stem(n5,im,'r')
+plt.ylabel('x[n]')
+plt.xlabel('n')
+plt.grid(True)
+plt.title('Real')
+plt.subplot(212)
+#plt.step(x5,y51,'b',where='mid')
+plt.stem(n5,re,'b')
+plt.ylabel('x[n]')
+plt.xlabel('n')
+plt.title('Imaginario')
+plt.grid(True)
+plt.show()
 
+'''
+9. Genere y grafique con la función Plot(Matlab) una señal senoidal en tiempo continuo xc(t) con frecuencia de 10*X Hz.
+'''
 
+f = 1 
+w = 2*np.pi*f
+n5 = np.linspace(-10,10,800)
+ys = np.sin(w*n5) 
+plt.figure()
+plt.ylabel('x(t)')
+plt.xlabel('t')
+plt.grid(True)
+plt.title('sin[n]')
+plt.plot(n5, ys)
+plt.show()
+'''
+10. Utilizando la señal del inciso 9, muestree dicha señal xc(t) con una frecuencia de muestro fs de 20*X Hz = 1 / Ts para obtener la secuencia x[n], Grafique con la 
+función Stem la secuencia x[n]. Para muestrear xc(t) utilice la relación entre frecuencias n*ω0 = Ω0*n*Ts en donde ω0 es la frecuencia angular de la secuencia 
+que se obtuvo del proceso de muestreo y Ω0 es la frecuencia angular de la señal senoidal en tiempo contínuo.
+'''
 
-
-
-
-
-
+f = 10 
+w = 2*np.pi*f
+n5 = np.arange(-5,5,1)
+ys = np.sin(w*n5) 
+plt.figure()
+plt.ylabel('x[n]')
+plt.xlabel('n')
+plt.grid(True)
+plt.title('sin[n]')
+plt.stem(n5, ys)
+plt.show()
 
 
 A=1
