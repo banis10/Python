@@ -50,12 +50,8 @@ plt.show()
 '''
 4. Una secuencia cuadrada períodica con ciclo de trabajo X/5 y frecuencia 10*X Hz.
 '''
-from scipy import signal
-import matplotlib.pyplot as plt
-import numpy as np 
-n=8
 n = np.arange(0,10,1)
-plt.plot(n, signal.square(2 * np.pi * 10*n * t,0.2),'r',n,signal.square(2*np.pi*10*n*t),'b')
+#plt.plot(n, signal.square(2 * np.pi * 10*n * n,0.2),'r',n,signal.square(2*np.pi*10*n),'b')
 plt.ylim(-2, 2)
 plt.title('Secuencia cuadrada periodica con \n ciclo de trabajo 1/5 y frecuencia 80 Hz')
 plt.stem(n, signal.square(2 * np.pi * 10*n * n,0.2),'r')
@@ -77,7 +73,7 @@ ys = np.sin(w*n5)
 yc = np.cos(w*n5)
 plt.figure()
 plt.ylabel('x(t)')
-plt.xlabe('t')
+plt.xlabel('t')
 plt.title('secuencias seno y coseno')
 plt.subplot(211)
 #plt.step(x5,y5,'r',where='mid' )
@@ -109,9 +105,10 @@ n = np.arange(0,10,1)
 plt.figure()
 xn1 = A*a**n
 xn2 = A*-a**n
-subplot(2,1,1)
+plt.subplot(2,1,1)
 plt.stem(n,xn1,'r')
-subplot(2,1,2)
+plt.grid(True)
+plt.subplot(2,1,2)
 plt.stem(n,xn2,'b')
 plt.grid(True)
 plt.show()
