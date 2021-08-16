@@ -37,3 +37,47 @@ x,y,z,w=sp.symbols('x,y,z,w')
 a=sp.Matrix([[0,0,0,1,0], [0,0,1,1,0],[0,1,1,1,0],[1,1,1,1,0]])
 sp.solve_linear_system(a,x,y,z,w)
 
+#Problema 4.5.10
+
+x,y=sp.symbols('x,y')
+a=sp.Matrix([[2,6], [3,9]])
+a=sp.Matrix([[2,6,0], [3,9,0]])
+sp.solve_linear_system(a,x,y)
+
+#Problmea 4.5.12
+
+x,y=sp.symbols('x,y')
+a=sp.Matrix([[4,8], [-3,-6]])
+a=sp.Matrix([[4,8,0], [-3,-6,0]])
+sp.solve_linear_system(a,x,y)
+
+#Problema 4.5.34
+#Span R2
+x,y,w,v=sp.symbols('x,y,w,v')
+a=sp.Matrix([[1,2], [1,-1]])
+sp.solve_linear_system(a,x,v)
+
+#LI
+
+x,y,w,v=sp.symbols('x,y')
+a=sp.Matrix([[1,2,0], [1,-1,0]])
+sp.solve_linear_system(a,x,y)
+
+
+#Ejercicio 4.5.38
+
+x,y,z=sp.symbols('x,y,z')
+a=sp.Matrix([[0,1,6], [0,5,2],[0,6,1]])
+a=sp.Matrix([[0,1,6,0], [0,5,2,0],[0,6,1,0]])
+sp.solve_linear_system(a,x,y,z)
+
+
+#Ejercicio 4.5.40
+
+
+x,y,z,w=sp.symbols('x,y,z,w')
+a=sp.Matrix([[1,0,1,0], [0,2,0,2],[0,0,1,2],[1,2,0,0]])
+
+a=sp.Matrix([[1,0,1,0,0], [0,2,0,2,0],[0,0,1,2,0],[1,2,0,0,0]])
+sp.solve_linear_system(a,x,y,z,w)
+
