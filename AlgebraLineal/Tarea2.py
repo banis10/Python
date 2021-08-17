@@ -81,3 +81,28 @@ a=sp.Matrix([[1,0,1,0], [0,2,0,2],[0,0,1,2],[1,2,0,0]])
 a=sp.Matrix([[1,0,1,0,0], [0,2,0,2,0],[0,0,1,2,0],[1,2,0,0,0]])
 sp.solve_linear_system(a,x,y,z,w)
 
+
+#Problema 1
+
+x,y=sp.symbols('x,y,z')
+a=sp.Matrix([[0,1,1,0], [0,1,1,0]])
+sp.solve_linear_system(a,x,y,z)
+
+
+#Problema 3
+x,y,z,w=sp.symbols('x,y,z,w')
+a=sp.Matrix([[1,0,0,0], [-1,1,0,0],[0,-1,1,0],[0,0,-1,1]])
+
+a=sp.Matrix([[1,0,0,0,0], [-1,1,0,0,0],[0,-1,1,0,0],[0,0,-1,1,0]])
+sp.solve_linear_system(a,x,y,z,w)
+
+#Problema 4
+x,y,z,t=sp.symbols('x,y,z,t')
+a=sp.Matrix([[3,2,5,0], [1,-3,9,0],[4,5,2,0]])
+sp.solve_linear_system(a,x,y,z)
+
+#Problema 5
+a=sp.Matrix([[1,0,0,0,0], [1,1,0,0,0],[0,1,1,0,0],[0,0,1,1,0]])
+sp.solve_linear_system(a,x,y,z,w)
+
+a=sp.Matrix([[1,0,0,0], [1,1,0,0],[0,1,1,0],[0,0,1,1]])
