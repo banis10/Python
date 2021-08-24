@@ -59,7 +59,6 @@ def interp(s, r, l=4, alpha=0.5):
     a = 1
     return r*signal.lfilter(b, a, upsample(s, r))[r*l+1:-1]
 
-
 def resample(s, p, q, h=None):
     """Change sampling rate by rational factor. This implementation is based on
     the Octave implementation of the resample function. It designs the 
@@ -129,18 +128,3 @@ def upfirdn(s, h, p, q):
     to do a full convolution operation (and its much faster than convolve).
     """
     return downsample(signal.fftconvolve(h, upsample(s, p)), q)
-
-def main():
-    """Show simple use cases for functionality provided by this module. Each 
-    example below attempts to mimic the examples provided by mathworks MATLAB
-    documentation, http://www.mathworks.com/help/toolbox/signal/
-    """
-    import pylab
-    argv = sys.argv
-    if len(argv) != 1:
-        print >>sys.stderr, 'usage: python -m pim.sp.multirate'
-        sys.exit(2)
-
-
-if __name__ == '__main__':
-    sys.exit(main())
