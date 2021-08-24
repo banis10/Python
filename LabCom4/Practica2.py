@@ -50,3 +50,18 @@ plt.subplot(212)
 plt.stem(np.arange(0,120),y[0:120])
 plt.grid(True)
 plt.show()
+
+
+import multirate as mt
+import numpy as np
+import matplotlib.pyplot as plt
+t = np.arange(0,1,1/1000)
+x = np.sin(2*np.pi*30*t) + np.sin(2*np.pi*60*t)
+y = mt.interp(x,5)
+plt.subplot(211)
+plt.stem(np.arange(0,30),x[0:30])
+plt.grid(True)
+plt.subplot(212)
+plt.stem(np.arange(0,120),y[0:120])
+plt.grid(True)
+plt.show()
