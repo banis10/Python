@@ -1,5 +1,4 @@
 #Practica 1 Laboratorio de comunicaciones 4 
-
 import matplotlib.pyplot as plt
 from scipy import signal
 import numpy as np
