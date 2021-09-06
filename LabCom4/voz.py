@@ -7,4 +7,4 @@ with sr.Microphone() as source:
         text = r.recognize_google(audio, language = 'es-ES')
         print('What did you say : {}'.format(text))
     except:
-        print('Sorry! I can\'t understand') 
+        print('Sorry! I can\'t understand')
