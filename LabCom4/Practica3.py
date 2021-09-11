@@ -85,6 +85,10 @@ rng = np.random.default_rng()
 sig_noise = y + rng.standard_normal(len(y))
 yf = fft(sig_noise)
 xf = fftfreq(N, T)[:N//2]
+plt.subplot(211)
+plt.grid()
+plt.plot(x[:50],sig_noise[:50])
+plt.subplot(212)
 plt.plot(xf,2/N* np.abs(yf[0:N//2]))
 plt.grid()
 plt.show()
@@ -120,6 +124,7 @@ Sí x es la secuencia impulso δ[n] entonces y[n] = h[n].
 Para la ecuación en diferencias causal
 y[n] – 1.143y[n-1]+ 0.4128y[n-2] = 0.0675x[n] + 0.1349x[n-1] + 0.0675x[n-2] 
 determine su respuesta impulso h[n] creando un vector x = δ[n] de longitud 50. Genere los primeros 50 puntos de h[n] y grafique las primeras 20 muestras.'''
+from scipy import signal
 x = np.ones(50)
 n = np.arange(0,len(x),1)
 a = np.array([1,-1.143,0.4128 ])
@@ -127,5 +132,6 @@ b = np.array([0.0675,0.1349,0.0675 ])
 
 h = signal.lfilter(b,a,x)
 
-plt.plot(n[:20],h[:20])
+plt.stem(n,h)
+plt.grid()
 plt.show()
