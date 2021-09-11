@@ -18,18 +18,10 @@ Fourier en tiempo discreto de la respuesta al impulso. Grafique h[n] y H en la m
 pantalla.'''
 import numpy as np
 from scipy.fft import fft, ifft
-from sympy import symbols,Function, Sum
+from sympy import symbols,Function, Sum, signal
 import matplotlib.pyplot as plt
 from math import *
 #X(e^jw)= sum(x[n]*e^-jwn)o
-x = np.ones(7)
-H = np.zeors(7)
-w = symbols('w')
-for c in x:
-    H[0] = e**w
-
-f = Function('x[n]*e**(-1j*n)')
-H=Sum(f(n),(n,0,7)).doit()
 
 n=20
 wn = np.arange(0,n,1)
@@ -125,13 +117,14 @@ Para la ecuación en diferencias causal
 y[n] – 1.143y[n-1]+ 0.4128y[n-2] = 0.0675x[n] + 0.1349x[n-1] + 0.0675x[n-2] 
 determine su respuesta impulso h[n] creando un vector x = δ[n] de longitud 50. Genere los primeros 50 puntos de h[n] y grafique las primeras 20 muestras.'''
 from scipy import signal
-x = np.ones(50)
+x = np.zeros(50)
+x[0]=1
 n = np.arange(0,len(x),1)
 a = np.array([1,-1.143,0.4128 ])
 b = np.array([0.0675,0.1349,0.0675 ])
 
 h = signal.lfilter(b,a,x)
 
-plt.stem(n,h)
+plt.stem(n[:20],h[:20])
 plt.grid()
 plt.show()
