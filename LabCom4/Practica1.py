@@ -219,4 +219,3 @@ plt.stem(n,x2)
 plt.subplot(313)
 plt.stem(n,x3)
 plt.show()
-
