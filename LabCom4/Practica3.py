@@ -7,8 +7,6 @@ ruido aleatorio de media 0. Se calculan los valores máximos de la auto correlac
 señal senoidal X y la de la correlación cruzada entre dos señales senoidales X e Y con 
 distintos valores de frecuencia. Utilizando la función filter se determina la respuesta al 
 impulso h[n] de una ecuación en diferencias recursiva causal.'''
-
-
  
 '''1. TRANSFORMADA DE FOURIER EN TIEMPO DISCRETO TFTD: Genere un vector respuesta 
 al impulso h[n] con un pulso de longitud de L muestras y amplitud 1 y un vector N con 
