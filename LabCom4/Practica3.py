@@ -16,12 +16,13 @@ Fourier en tiempo discreto de la respuesta al impulso. Grafique h[n] y H en la m
 pantalla.'''
 import numpy as np
 from scipy.fft import fft, ifft
-from sympy import symbols,Function, Sum, signal
+from scipy import signal
+from sympy import symbols,Function, Sum
 import matplotlib.pyplot as plt
 from math import *
 #X(e^jw)= sum(x[n]*e^-jwn)o
 
-n=20
+n = 50
 wn = np.arange(0,n,1)
 w = np.linspace(-pi,pi,n)
 H = 1+2*np.cos(w)
