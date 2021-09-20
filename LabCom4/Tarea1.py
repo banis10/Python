@@ -2,6 +2,7 @@ import numpy as np
 import scipy as sp
 from scipy import signal 
 import matplotlib.pyplot as plt
+from math import *
 #Problema 2.30
 #Sumatoria de convolucion ejemplo del libro 2.11
 #Definir el tamaño de las muestras 
@@ -107,3 +108,32 @@ plt.grid(True)
 plt.ylabel('y[n]')
 plt.xlabel('n')
 plt.show()
+
+
+
+#Problema 2.33
+
+n=50
+w = np.linspace(-pi,pi,n)
+H = -2+4*e**(-1j*w)+2*e**(-2j*w)
+re = np.real(H)
+im = np.imag(H)
+#Escalon
+#Respuesta 
+plt.subplot(311)
+plt.title('Respuesta en Frecuencia')
+plt.plot(w,np.real(H))
+plt.grid()
+#Modulo
+plt.subplot(312)
+plt.title('Modulo')
+mod = abs(H)
+plt.grid()
+plt.plot(w,mod)
+#Fase
+plt.subplot(313)
+plt.title('Fase')
+fase =np.arctan(im/re) 
+plt.plot(w,fase)
+plt.show()
+
