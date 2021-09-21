@@ -13,13 +13,13 @@ engine.runAndWait()
 
 r = sr.Recognizer()
 with sr.Microphone() as source:
-    print('Say something...')
+    print('Por favor diga su respuesta')
     audio = r.listen(source)
     try:
         rec = r.recognize_google(audio, language = 'es-ES')
-        print('What did you say : {}'.format(rec))
+        print('Su respuesta es : {}'.format(rec))
     except:
-        print('Sorry! I can\'t understand')
+        print('Por favor repita su respuesta')
         
 
 vac = rec.split()
