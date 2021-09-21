@@ -18,21 +18,40 @@ with sr.Microphone() as source:
     try:
         rec = r.recognize_google(audio, language = 'es-ES')
         print('Su respuesta es : {}'.format(rec))
+        vac = rec.split()
+        print(vac)
+        if 'primera' in vac:
+            text1 = "Viene a la primera dosis, por favor dirijase al módulo, A"
+            engine.say(text1)
+            engine.runAndWait()
+        elif 'segunda' in vac:
+            text2 = "Viene a la segunda dosis, por favor dirijase al módulo, B"
+            engine.say(text2)
+            engine.runAndWait()
+        else:
+            text3 = "Por favor repita su respuesta"
+            engine.say(text3)
+            engine.runAndWait()
     except:
+        text3 = "Por favor repita su respuesta"
+        engine.say(text3)
+        engine.runAndWait()
         print('Por favor repita su respuesta')
         
 
-vac = rec.split()
-print(vac)
+# vac = rec.split()
+# print(vac)
 
-if 'primera' in vac:
-    text1 = "Viene a la primera dosis, por favor dirijase al módulo A"
-    engine.say(text1)
-    engine.runAndWait()
-if 'segunda' in vac:
-    engine.runAndWait()
-    text2 = "Viene a la segunda dosis, por favor dirijase al módulo B"
-    engine.say(text2)
-    engine.runAndWait()
-
+# if 'primera' in vac:
+    # text1 = "Viene a la primera dosis, por favor dirijase al módulo, A"
+    # engine.say(text1)
+    # engine.runAndWait()
+# elif 'segunda' in vac:
+    # text2 = "Viene a la segunda dosis, por favor dirijase al módulo, B"
+    # engine.say(text2)
+    # engine.runAndWait()
+# else:
+    # text3 = "Por favor repita su respuesta"
+    # engine.say(text3)
+    # engine.runAndWait()
 
