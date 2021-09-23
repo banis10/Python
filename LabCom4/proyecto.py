@@ -12,7 +12,7 @@ engine.say(text)
 engine.runAndWait()
 
 r = sr.Recognizer()
-with sr.Microphone() as source:
+with sr.Microphone(device_index=0) as source:
     print('Por favor diga su respuesta')
     audio = r.listen(source)
     try:
