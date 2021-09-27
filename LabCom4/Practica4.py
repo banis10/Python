@@ -17,6 +17,7 @@ Astop = 60 #dB
 
 #Segunda parte
 #Diseñe un filtro FIR(filtro 1), con el método de enventanado, utilizando una ventana de Kaiser, pasa bajas, con las siguientes carácteristicas
+X = 6
 Fs = 44100
 Fpass = 1000 #Hz
 Fstop = 1000+100*X #Hz
