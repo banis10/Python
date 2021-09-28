@@ -3,6 +3,7 @@
 #Primera parte
 import numpy as np 
 from scipy import signal
+import matplotlib.pyplot as plt
 #1. Diseñe un filtro FIR, con el método de un enventanado, 
 # utilizando una ventana de Kaiser, pasa bajas,
 # con las siguientes caracteristicas
