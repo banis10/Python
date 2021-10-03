@@ -10,8 +10,9 @@
 #https://la.mathworks.com/help/signal/digital-and-analog-filters.html?s_tid=CRUX_topnav
 #Primera parte
 import numpy as np
-from scipy.signal import kaiserord, firwin, freqz
 import matplotlib.pyplot as plt
+import scipy.signal as signal
+from scipy.signal.windows.windows import kaiser
 #1. Diseñe un filtro FIR, con el método de un enventanado, 
 # utilizando una ventana de Kaiser, pasa bajas,
 # con las siguientes caracteristicas
@@ -23,28 +24,26 @@ Astop = 60 #dB Atenuación al comienzo de la banda eliminada
 
 width = Fstop - Fpass
 
-numtaps, beta = kaiserord(60,width/(0.5*Fs))
-taps = firwin(numtaps, Fstop, window =('kaiser',beta ),scale=False, nyq=0.5*Fs)
-w,h = freqz(taps,worN=8000)
-w *= 0.5*Fs/np.pi
-ideal = w < Fstop 
-deviation = np.abs(np.abs(h)-ideal)
-deviation [(w > Fstop - 0.5*width) & (w<Fstop + 0.5*width)]=np.nan
-plt.plot(w,20*np.log10(np.abs(deviation)))
-plt.xlim(0, 0.5*Fs)
-plt.ylim(-90,-50)
-plt.grid(alpha=0.25)
-plt.xlabel('Frequenzy(Hz)')
+m, beta = signal.kaiserord(60,width/(0.5*Fs))
+
+b = fir_filter_design(m, 0.2, window =('kaiser',beta ))
+w = signal.kaiser(m,beta)
+h = b*w
+w,a = freqz(h)
+plt.plot(w/np.pi/2,20*np.log10(np.abs(a)))
+plt.grid(True)
 plt.show()
 
 
-plt.plot(np.arange(0,len(taps),1),taps)
-plt.show()
 #2. Cargue o grabe una cancíon (señal 1) y aplique el filtro (señal 2)
 #3. Reproduzca el resultado y compárelo con el audio original.
 #4. Diseñe un filtro IIR, de tipo Chevyshev I,
 #pasa bajas, con las mismas características. 
 #Si el filtro se diseña en varias secciones conviértalo a una sección 
+
+
+
+
 #5. Repita los pasos 2 y 3 (señal 3).
 #6. Aplique la transformada de Fourier 
 # a las tres señales y grafique su magnitud en la misma imagen. 
