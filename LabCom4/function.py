@@ -1,106 +1,131 @@
-
-import pyttsx3
-import speech_recognition as sr
-
-s = True
-while s==True:
+def voz(texto):
+    import pyttsx3
     engine = pyttsx3.init()
-    #Control the rate. Higher rate = more speed
-    engine.setProperty("rate", 150)
-    text = "Buen dia, por favor coloque su DPI"
-    engine.say(text)
+    engine.setProperty("rate",150)
+    engine.say(texto)
     engine.runAndWait()
-    #detectar DPI
 
-    k = True
-    while k == True:
-        text = '¿Para qué tipo de vacuna viene?, Moderna, Astrazeneca, Sputnik o Faiser'
-        engine.say(text)
-        engine.runAndWait()
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source)
-            print('Por favor diga su respuesta')
-            audio = r.listen(source)
-            try:
-                rec = r.recognize_google(audio, language = 'es-ES')
-                vac = rec.split()
-                print('respuesta = : {}'.format(rec))
-                print(vac)
-                if 'moderna' in vac:
-                    print('respuesta = : {}'.format(rec))
-                    vac1 = "Viene para la vacuna Moderna"
-                    engine.say(vac1)
-                    engine.runAndWait()
-                    vacuna = 'Moderna'
-                    k = False
-                elif 'astrazeneca' in vac:
-                    print('Su vacuna es : {}'.format(rec))
-                    vac2 = "Viene para la vacuna Astrazeneca"
-                    engine.say(vac2)
-                    engine.runAndWait()
-                    vacuna = 'Astrazeneca'
-                    k = False
-                elif 'sputnik' in vac:
-                    print('respuesta = : {}'.format(rec))
-                    vac3 = "Viene para la vacuna Sputnik"
-                    engine.say(vac3)
-                    engine.runAndWait()
-                    vacuna = 'SputnikV'
-                    k = False
-                elif 'pfizer'in vac:
-                    print('respuesta = : {}'.format(rec))
-                    vac4 = "Viene para la vacuna Pfizer"
-                    engine.say(vac4)
-                    engine.runAndWait()
-                    vacuna = 'Pfizer'
-                    k = False
-                else:
-                    print('respuesta = : {}'.format(rec))
-                    vac5 = "Por favor repita su respuesta"
-                    engine.say(vac5)
-                    engine.runAndWait()
-            except:
-                text3 = "Por favor repita"
-                engine.say(text3)
-                engine.runAndWait()
+def escuchar():
+    import speech_recognition as sr
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source)
+        print('Por favor diga su respuesta')
+        audio = r.listen(source)
+        vac = ''
+        try:
+            rec = r.recognize_google(audio, language='es-ES')
+            print('Escuchado = : {}'.format(rec))
+            vac = rec.split()
+        except:
+            print('Por favor, repita su respuesta')
+    return vac
 
+def fvacuna():
+    voz('¿Para que tipo de vacuna viene?. Moderna, Astrazeneca, Sputnik o Faiser')
+    escuchado = ' '
+    vacuna = ' '
+    escuchado=escuchar()
+    escuchado=str(escuchado)
+    escuchado = escuchado.lower()
+    # print(escuchado)
+    if 'moderna' in escuchado:
+        voz('  Viene para la vacuna moderna.')
+        vacuna = 'Moderna'
+    elif 'astrazeneca' in escuchado:
+        voz('  Viene para la vacuna astrazeneca.') 
+        vacuna = 'Astrazeneca'
+    elif 'sputnik' in escuchado:
+        voz('  Viene para la vacuna Sputnik')
+        vacuna = 'SputnikV'
+    elif 'pfizer' in escuchado:
+        voz('  Viene para la vacuna Faiser')
+        vacuna = 'Pfizer'
+    elif 'fiser' in escuchado:
+        voz('  Viene para la vacuna Faiser')
+        vacuna = 'Pfizer'
+    elif 'fisher' in escuchado:
+        voz('  Viene para la vacuna Faiser')
+        vacuna = 'Pfizer'
+    elif 'freezer' in escuchado:
+        voz('  Viene para la vacuna Faiser')
+        vacuna = 'Pfizer'
+    elif 'teaser' in escuchado:
+        voz('  Viene para la vacuna Faiser')
+        vacuna = 'Pfizer'
+    else:
+        voz('Por favor, repita su respuesta')
+    return vacuna
+
+def fdosis():
+    voz('¿Viene para la primera o segunda dosis')
+    escuchado = ' '
+    dosis = ' '
+    escuchado=escuchar()
+    escuchado=str(escuchado)
+    escuchado = escuchado.lower()
+    # print(escuchado)
+    if 'primera' in escuchado:
+        voz('  Viene para la primera dosis')
+        dosis = 'Primera'
+    elif 'segunda' in escuchado:
+        voz('  Viene para la segunda dosis') 
+        dosis = 'Segunda'
+    else:
+        voz('Por favor, repita su respuesta')
+    return dosis
+
+def fmodulo(vacuna,dosis): 
+    if vacuna == 'Moderna' and dosis == 'Primera':
+        voz('Por favor dirijase al modulo, A')
+
+    if vacuna == 'Moderna' and dosis == 'Segunda':
+        voz ('Por favor dirijase al modulo, B')
+
+    if vacuna == "Astrazeneca" and dosis == 'Primera':
+        voz ('Por favor dirijase al modulo, C')
+
+    if vacuna == 'Astrazeneca' and dosis == 'Segunda':
+        voz ('Por favor dirijase al modulo, D')
+
+    if vacuna =='SputnikV' and dosis == 'Primera':
+        voz ('Por favor dirijase al modulo, E')
+
+    if vacuna =='SputnikV' and dosis == 'Segunda':
+        voz ('Por favor dirijase al modulo, F')
+
+    if vacuna == 'Pfizer' and dosis == 'Primera':
+        voz ('Por favor dirijase al modulo, G')
+    
+    if vacuna == 'Pfizer' and dosis == 'Segunda':
+        voz ('Por favor dirijase al modulo, H')
+
+def proyecto():
+    vacunas = ('Moderna','Astrazeneca','Pfizer','SputnikV')
+    dosis1 = ('Primera','Segunda')
     n = True
     while n == True:
-        text = "¿Viene para la primera, o segunda dosis?"
-        engine.say(text)
-        engine.runAndWait()
+        vacuna = fvacuna()
+        if vacuna in vacunas:
+            n = False
+        else:
+            n = True
+    k = True
+    while k == True:
+        dosis = fdosis()
+        if dosis in dosis1:
+            k = False
+        else:
+            k = True
+    # print(vacuna, dosis)
+    fmodulo(vacuna,dosis)
+    return vacuna,dosis
 
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source)
-            print('Por favor diga su respuesta')
-            audio = r.listen(source)
-            try:
-                rec = r.recognize_google(audio, language = 'es-ES')
-                print('Su respuesta es : {}'.format(rec))
-                vac = rec.split()
-                print(vac)
-                if 'primera' in vac:
-                    text1 = "Viene a la primera dosis, por favor dirijase al módulo, A"
-                    engine.say(text1)
-                    engine.runAndWait()
-                    dosis = 'Primera'
-                    n = False
-                elif 'segunda' in vac:
-                    text2 = "Viene a la segunda dosis, por favor dirijase al módulo, B"
-                    engine.say(text2)
-                    engine.runAndWait()
-                    dosis = 'Segunda'
-                    n = False
-                else:
-                    text3 = "Por favor repita su respuesta"
-                    engine.say(text3)
-                    engine.runAndWait()
-            except:
-                text3 = "Por favor repita su respuesta"
-                engine.say(text3)
-                engine.runAndWait()
-                print('Por favor repita su respuesta')
+##################################################
 
-    print(vacuna, dosis)
+voz('Buen dia, por favor coloque su DPI')
+
+vacuna,dosis = proyecto()
+
+print(vacuna,dosis)
+
