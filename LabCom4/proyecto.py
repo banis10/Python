@@ -2,7 +2,7 @@ import pyttsx3
 import speech_recognition as sr
 
 s = True
-while s==True:
+while s == True:
     engine = pyttsx3.init()
     #Control the rate. Higher rate = more speed
     engine.setProperty("rate", 150)
