@@ -14,7 +14,7 @@
     ios_banner:
       banner: motd
       text: |
-        This is the MOTD message that we have configure in the video
+        One Router to rule them all, One Router to find them, One Router to bring them all and in the darkness bind them
       state: present
 
   - name: Show the version of the devices
