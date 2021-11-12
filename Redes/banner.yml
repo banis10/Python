@@ -1,5 +1,5 @@
 ---
-- hosts: cisco
+- hosts: routers
   gather_facts: no
   tasks:
   - name: Lets configure login banner
