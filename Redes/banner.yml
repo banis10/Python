@@ -2,7 +2,7 @@
 - hosts: routers
   gather_facts: no
   tasks:
-  - name: Lets configure login banner
+  - name: Configuración banner login
     ios_banner:
       banner: login
       text: |
@@ -11,7 +11,7 @@
         #############################################################
       state: present
 
-  - name: Lets configure motd banner
+  - name: Configuración banner motd
     ios_banner:
       banner: motd
       text: |
