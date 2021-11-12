@@ -6,8 +6,7 @@
     ios_banner:
       banner: login
       text: |
-        This device is used for the network related videos
-        This is the login banner.
+        The Doors of Durin, Lord of Moria. Speak, friend, and enter. I, Narvi, made them. Celebrimbor of Hollin drew these signs.
       state: present
 
   - name: Lets configure motd banner
