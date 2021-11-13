@@ -38,7 +38,7 @@
   vars:
     command_list:
     # - show etherchannel summary 
-    #  - show cdp neigh 
+      - show cdp neigh 
     # - sh switch stack-ports
     # - sh switch 
     # - show environment all
