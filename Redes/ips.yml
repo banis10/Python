@@ -1,24 +1,27 @@
 ---
 ## Playbook to get system time and append it to backup files
 - hosts: Rick1
+
   tasks:
   - name: Show IP int brief 
     ios_command:
       commands: show ip int brief  
-    register: config1
-  - hosts: Rick2
-    tasks:
-    - name: Show IP int brief 
-      ios_command:
-        commands: show ip int brief  
-      register: config2
-    - hosts: Rick3
-      tasks:
-      - name: Show IP int brief 
-        ios_command:
-          commands: show ip int brief  
-        register: config3
+    register: config
+
   - name: Save output to ~/network-programmability/backups/
     copy:
-      content: ["{{config1.stdout[0]}}","{{config2.stdout[0]}}","{{config3.stdout[0]}}"]
+      content: "{{config.stdout[0]}}"
       dest: "~/network-programmability/backups/ship.txt"
+
+- hosts: Rick2
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Save output to ~/network-programmability/backups/
+    lineinfile:
+      path: ~/network-programmability/backups/ship.txt"
+      line: "{{config.stdout[0]}}"
