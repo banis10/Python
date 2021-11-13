@@ -33,7 +33,7 @@
       content: "{{config.stdout[0]}}"
       dest: "~/network-programmability/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
       
-- hosts: CSR_Routers 
+- hosts: routers 
 
   vars:
     command_list:
