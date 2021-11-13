@@ -21,7 +21,7 @@
       commands: show ip int brief  
     register: config
 
-  - name: Save output to ~/network-programmability/backups/
+  - name: Insert a line at the end 
     lineinfile:
-      path: ~/network-programmability/backups/ship.txt"
+      path: ~/network-programmability/backups/ship.txt
       line: "{{config.stdout[0]}}"
