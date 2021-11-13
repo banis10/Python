@@ -15,7 +15,7 @@
 
   - name: Create Directory {{hostvars.localhost.DTG}}
     file:
-      path: ~/network-programmability/backups/{{hostvars.localhost.DTG}}
+      path: ~/proyecto/backups/{{hostvars.localhost.DTG}}
       state: directory
   run_once: true
 
@@ -28,10 +28,10 @@
       commands: show run  
     register: config
 
-  - name: Save output to ~/network-programmability/backups/
+  - name: Save output to ~/proyecto/backups/
     copy:
       content: "{{config.stdout[0]}}"
-      dest: "~/network-programmability/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
+      dest: "~/proyecto/backups/{{hostvars.localhost.DTG}}/{{inventory_hostname}}-{{hostvars.localhost.DTG}}-config.txt"
       
 - hosts: routers 
 
@@ -63,5 +63,5 @@
   - name: "Put all the files together into one nice text file"
     template: 
       src: template.j2 
-      dest: "~/network-programmability/backups/{{hostvars.localhost.DTG}}/{{ inventory_hostname }}-{{hostvars.localhost.DTG}}-showoutput.txt"
+      dest: "~/proyecto/backups/{{hostvars.localhost.DTG}}/{{ inventory_hostname }}-{{hostvars.localhost.DTG}}-showoutput.txt"
 
