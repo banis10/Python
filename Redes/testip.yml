@@ -19,7 +19,7 @@
       state: directory
   run_once: true
 
-- hosts: CSR_Routers 
+- hosts: routers 
 
   tasks:
   - name: Show IP int brief 
