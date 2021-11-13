@@ -24,7 +24,7 @@
       commands: show ip int brief  
     register: config3
 
-  - name: Save output to ~/network-programmability/backups/
-    copy:
-      content: ["{{config3.stdout[0]}}","{{config2.stdout[0]}}" ,"{{config3.stdout[0]}}"]
-      dest: "~/network-programmability/backups/Rick3.txt"
+- name: Save output to ~/network-programmability/backups/
+  copy:
+    content: ["{{config1.stdout[0]}}","{{config2.stdout[0]}}" ,"{{config3.stdout[0]}}"]
+    dest: "~/network-programmability/backups/Rick3.txt"
