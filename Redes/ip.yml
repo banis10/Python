@@ -44,7 +44,7 @@
     # - show environment all
     # - show ip ospf int brief 
     # - show ip ospf neigh 
-    # - show cdp neighbors detail
+      - show cdp neighbors detail
     # - show version 
     # - show license usage 
     # - show clock
