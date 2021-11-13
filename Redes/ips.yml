@@ -25,3 +25,16 @@
     lineinfile:
       path: ~/network-programmability/backups/ship.txt
       line: "{{config.stdout[0]}}"
+
+- hosts: Rick3
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Insert a line at the end 
+    lineinfile:
+      path: ~/network-programmability/backups/ship.txt
+      line: "{{config.stdout[0]}}"
