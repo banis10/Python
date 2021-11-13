@@ -1,0 +1,33 @@
+---
+## Playbook to get system time and append it to backup files
+
+- hosts: localhost
+
+  tasks:
+  - name: Get ansible date/time facts
+    setup:
+      filter: "ansible_date_time"
+      gather_subset: "!all"
+
+  - name: Store DTG as fact
+    set_fact:
+      DTG: "{{ ansible_date_time.date }}"
+
+  - name: Create Directory {{hostvars.localhost.DTG}}
+    file:
+      path: ~/proyecto/ips/{{hostvars.localhost.DTG}}
+      state: directory
+  run_once: true
+
+- hosts: routers
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Save output to ~/proyecto/ips/
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "~/proyecto/ips/ship.txt"
