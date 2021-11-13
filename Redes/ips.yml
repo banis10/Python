@@ -1,0 +1,39 @@
+---
+- hosts: Rick1 
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Save output to ~/network-programmability/backups/
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "~/network-programmability/backups/Rick1.txt"
+
+- hosts: Rick2 
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Save output to ~/network-programmability/backups/
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "~/network-programmability/backups/Rick2.txt"
+
+- hosts: Rick3 
+
+  tasks:
+  - name: Show IP int brief 
+    ios_command:
+      commands: show ip int brief  
+    register: config
+
+  - name: Save output to ~/network-programmability/backups/
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "~/network-programmability/backups/Rick3.txt"
