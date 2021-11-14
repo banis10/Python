@@ -37,21 +37,9 @@
 
   vars:
     command_list:
-    # - show etherchannel summary 
       - show cdp neigh 
-    # - sh switch stack-ports
-    # - sh switch 
-    # - show environment all
-    # - show ip ospf int brief 
-    # - show ip ospf neigh 
       - show cdp neighbors detail
       - show version 
-    # - show license usage 
-    # - show clock
-    # - show users
-    # - show boot
-    # - show int status | inc connected
-    # - show arp
       - show ip interface brief | exc admin
 
   tasks:

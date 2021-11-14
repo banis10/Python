@@ -11,7 +11,7 @@
   - name: Save output to ~/network-programmability/backups/
     copy:
       content: "{{config.stdout[0]}}"
-      dest: "~/network-programmability/backups/ship.txt"
+      dest: ~/proyecto/ip/ips.txt
 
 - hosts: Rick2
 
@@ -23,7 +23,7 @@
 
   - name: Insert a line at the end 
     lineinfile:
-      path: ~/network-programmability/backups/ship.txt
+      path: ~/proyecto/ip/ips.txt
       line: "{{config.stdout[0]}}"
 
 - hosts: Rick3
@@ -36,5 +36,5 @@
 
   - name: Insert a line at the end 
     lineinfile:
-      path: ~/network-programmability/backups/ship.txt
+      path: ~/proyecto/ip/ips.txt
       line: "{{config.stdout[0]}}"
