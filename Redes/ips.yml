@@ -10,7 +10,7 @@
 
   - name: Save output to ~/network-programmability/backups/
     copy:
-      content: "Interfaces y direcciones Ip Rick1"
+      content: "Interfaces y direcciones Ip Rick1 "
       dest: ~/proyecto/ip/ips.txt
 
   - name: Insert a line at the end 
