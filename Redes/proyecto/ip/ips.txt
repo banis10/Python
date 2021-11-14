@@ -1,0 +1,19 @@
+Interfaces y direcciones Ip Rick1
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0/0            192.168.239.129 YES DHCP   up                    up      
+FastEthernet0/1            10.10.10.197    YES NVRAM  up                    up      
+FastEthernet1/0            10.10.10.194    YES NVRAM  up                    up      
+FastEthernet2/0            10.10.10.129    YES NVRAM  up                    up      
+FastEthernet3/0            unassigned      YES NVRAM  administratively down down
+Interfaces y direcciones Ip Rick2
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0/0            10.10.10.193    YES NVRAM  up                    up      
+FastEthernet0/1            10.10.10.1      YES NVRAM  up                    up      
+FastEthernet1/0            10.10.10.130    YES NVRAM  up                    up      
+FastEthernet2/0            unassigned      YES NVRAM  administratively down down
+Interfaces y direcciones Ip Rick3
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0/0            10.10.10.198    YES NVRAM  up                    up      
+FastEthernet0/1            10.10.10.65     YES NVRAM  up                    up      
+FastEthernet1/0            10.10.10.131    YES NVRAM  up                    up      
+FastEthernet2/0            unassigned      YES NVRAM  administratively down down

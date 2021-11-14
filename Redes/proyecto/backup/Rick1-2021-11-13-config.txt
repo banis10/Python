@@ -1,0 +1,136 @@
+Building configuration...
+
+Current configuration : 2052 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Rick1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$yFpY$s5.bSyGiChdE/sOW.CRZi/
+!
+no aaa new-model
+memory-size iomem 5
+no ip icmp rate-limit unreachable
+!
+!
+ip cef
+ip domain name banis.org
+ip name-server 8.8.8.8
+no ip dhcp use vrf connected
+ip dhcp excluded-address 10.10.10.129 10.10.10.139
+!
+ip dhcp pool RED_C
+   network 10.10.10.128 255.255.255.192
+   default-router 10.10.10.129 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username banis privilege 15 password 0 banis
+!
+!
+ip tcp synwait-time 5
+ip ssh version 2
+! 
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address dhcp
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 10.10.10.197 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ ip address 10.10.10.194 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet2/0
+ ip address 10.10.10.129 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface FastEthernet3/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+!
+no ip http server
+no ip http secure-server
+ip forward-protocol nd
+ip route 10.10.10.0 255.255.255.192 10.10.10.193
+ip route 10.10.10.64 255.255.255.192 10.10.10.198
+!
+!
+!
+no cdp log mismatch duplex
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+banner login ^C
+############################################################
+"The Doors of Durin, Lord of Moria. Speak, friend, and enter"
+#############################################################
+^C
+banner motd ^C
+############################################################
+"One Router to rule them all, 
+One Router to find them, 
+One Router to bring them all and in the darkness bind them"
+############################################################
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ password banis
+ logging synchronous
+ login
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input all
+line vty 5 15
+ login local
+ transport input all
+!
+!
+end
