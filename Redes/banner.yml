@@ -15,9 +15,9 @@
     ios_banner:
       banner: motd
       text: |
-        ############################################################
+        ###########################################################
         "One Router to rule them all, 
         One Router to find them, 
         One Router to bring them all and in the darkness bind them"
-        ############################################################
+        ###########################################################
       state: present
