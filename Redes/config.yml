@@ -48,7 +48,7 @@
       commands: "{{ command_list }}"
     register: showoutput
 
-  - name: "Put all the files together into one nice text file"
+  - name: "Configuraciones en un template"
     template: 
       src: template.j2 
       dest: "~/proyecto/backups/{{hostvars.localhost.DTG}}/{{ inventory_hostname }}-{{hostvars.localhost.DTG}}-showoutput.txt"
