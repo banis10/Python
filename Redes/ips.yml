@@ -10,8 +10,13 @@
 
   - name: Save output to ~/network-programmability/backups/
     copy:
-      content: "{{config.stdout[0]}}"
+      content: "Interfaces y direcciones Ip Rick3"
       dest: ~/proyecto/ip/ips.txt
+
+  - name: Insert a line at the end 
+    lineinfile:
+      path: ~/proyecto/ip/ips.txt
+      line: "{{config.stdout[0]}}"
 
 - hosts: Rick2
 
@@ -21,6 +26,10 @@
       commands: show ip int brief  
     register: config
 
+  - name: Insert a line at the end 
+    lineinfile:
+      path: ~/proyecto/ip/ips.txt
+      line: "Interfaces y direcciones Ip Rick2"
   - name: Insert a line at the end 
     lineinfile:
       path: ~/proyecto/ip/ips.txt
@@ -34,6 +43,10 @@
       commands: show ip int brief  
     register: config
 
+  - name: Insert a line at the end 
+    lineinfile:
+      path: ~/proyecto/ip/ips.txt
+      line: "Interfaces y direcciones Ip Rick3"
   - name: Insert a line at the end 
     lineinfile:
       path: ~/proyecto/ip/ips.txt
