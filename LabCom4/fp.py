@@ -4,7 +4,7 @@ x,y,z = symbols('x,y,z')
 
 y=(x+1)/(x**2-2*x+1)
 apart(y)
-  
+
 #Ejemplo de la clase
 a=(1+z**-1)**2
 b=( 1 - (3/2)*z**-1 + (1/2)*z**-2)
