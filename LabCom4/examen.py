@@ -11,7 +11,6 @@ h = np.arange(-n,n,1)   #Respuesta al impulso
 h0 = np.zeros(len(h))
 x0[n-2:n+2] = 1
 h0[n:n+3] = 1
-
 y = sp.signal.convolve(x0, h0,'same')
 yn = np.arange(-(n+1),n-1,1)
 #El inicio de y es la suma de x0 inicio y h0 inicio en este caso es n donde n es la posicion 0 
